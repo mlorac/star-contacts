@@ -13,6 +13,7 @@ export class ContactsListComponent implements OnInit {
   public layoutType = LayoutType;
   public layout: LayoutType = LayoutType.LIST;
 
+  public filterName: string = '';
   public contacts: Array<Contact> = [];
   constructor(private contactsService: ContactsService) { }
 
@@ -32,6 +33,12 @@ export class ContactsListComponent implements OnInit {
 
   public orderByDate() {
     this.contacts = this.contacts.sort((a,b) =>  a.created > b.created ? 1 : -1)
+  }
+
+  public filterByName() {
+    this.contactsService.findAll().subscribe(
+      data => this.contacts = data.filter(c => c.name.toLowerCase().includes(this.filterName.toLowerCase())),
+      err => console.log(err));
   }
 
   public changeLayout(type: LayoutType) {

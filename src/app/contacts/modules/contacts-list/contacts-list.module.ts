@@ -5,6 +5,7 @@ import { ContactsListCardComponent } from './components/contacts-list-card/conta
 import { ContactsListLineComponent } from './components/contacts-list-line/contacts-list-line.component';
 import { routing } from './contacts-list-routing.module';
 import { ContactsService } from 'src/app/shared/services/contacts.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,8 @@ import { ContactsService } from 'src/app/shared/services/contacts.service';
   ],
   imports: [
     routing,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     ContactsService
