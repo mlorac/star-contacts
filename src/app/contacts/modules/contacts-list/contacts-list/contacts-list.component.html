@@ -1,0 +1,35 @@
+<div class="full-page">
+  <div class="header d-flex justify-content-between">
+    <h2>Contatos</h2>
+
+    <div>
+      <button (click)="changeLayout(layoutType.GRID)">
+        <i class="icon-grid"></i>
+      </button>
+      <button (click)="changeLayout(layoutType.LIST)">
+        <i class="icon-list"></i>
+      </button>
+    </div>
+  </div>
+
+  <div id="search">
+    <input type="text">
+    <button (click)="orderByName()">Ordenar por nome</button>
+    <button (click)="orderByDate()">Ordenar por criação</button>
+  </div>
+
+  <ng-container [ngSwitch]="layout">
+    <div *ngSwitchCase="layoutType.GRID">
+      <div *ngFor="let contact of contacts">
+        <app-contacts-list-card [contact]="contact"></app-contacts-list-card>
+      </div>
+    </div>
+
+    <div *ngSwitchDefault>
+      <div *ngFor="let contact of contacts">
+        <app-contacts-list-line [contact]="contact"></app-contacts-list-line>
+      </div>
+    </div>
+  </ng-container>
+
+</div>
